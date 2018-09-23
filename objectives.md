@@ -1,10 +1,15 @@
 Potential issues within a dataset:
 	duplicate rows
 	duplicate columns
-	incomplete records
-	
+	missing values/fields
+	field format inconsistencies
+	Illogical Field values/Outliers
+
 
 Potential issues between multiple datasets:
 	scaling
 	column name conflicts (diff data with same name)
-	
+
+
+Examine and fix modes
+	detect issues or correct issues
