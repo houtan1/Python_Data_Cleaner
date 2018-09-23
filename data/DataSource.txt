@@ -1,0 +1,8 @@
+PANGAEA.
+Data Publisher for Earth & Environmental Science
+
+https://doi.pangaea.de/10.1594/PANGAEA.885775
+
+Döring, Julian; Neumann, S I; Sloterdijk, Hans; Ekau, Werner (2018): Age at length data for larval African halfbeak Hyporhamphus picarti (Hemiramphidae) in the Sine Saloum estuary, Senegal. PANGAEA, https://doi.org/10.1594/PANGAEA.885775,
+Supplement to: Döring, J et al. (2018): Seasonal growth differences of larval Hyporhamphus picarti (Hemiramphidae) in the Sine Saloum estuary, Senegal. Journal of Applied Ichthyology, 34(1), 97-102, https://doi.org/10.1111/jai.13528
+
