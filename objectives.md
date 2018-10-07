@@ -13,3 +13,4 @@ Potential issues between multiple datasets:
 
 Examine and fix modes
 	detect issues or correct issues
+	allow user to step through each conflict
