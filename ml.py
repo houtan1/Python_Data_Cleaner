@@ -38,11 +38,11 @@ if 'year' in df.columns and 'month' in df.columns:
 	if 'day' not in df.columns:
 		df["day"] = 1
 
-	# If month is of type object, convert to string
+	# If month is of type object (string), convert to integer
 	if df["month"].dtype == np.object:
 		df["month"] = df["month"].apply(lambda x: strptime(str(x),'%B').tm_mon)
 
-	# Use Pandas to convert string fields to dates
+	# Use Pandas to convert multiple DateTime columns to a single date column
 	df["date"] = pandas.to_datetime(dict(year=df["year"], month=df["month"], day=df["day"]), errors='ignore')
 
 	# Drop unneeded columns
