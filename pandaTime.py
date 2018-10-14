@@ -1,6 +1,7 @@
 # import the pandas module
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
 # read in the stripped data into a dataframe and print it
 df = pd.read_table('data/Doering-etal_2018-strip.tab')
@@ -29,20 +30,28 @@ df = df.dropna()
 # print(df['Depth water [m]'] + df['Temp [°C]'] + df['Longitude'])
 # note, all columns show up as "object" type which is equivalent to string
 # but adding those strings behaves like adding numbers...
+# Stphen: we lose all concepts of types as soon as we transpose the table,
+# so we need to use df = df.infer_objects() to get the correct types again
+df = df.infer_objects()
+# print(df.dtypes)
+# print(df.info())
 
 # Goal 5. Illogical fields values and outliers
 # first, drop all non-numeric columns
 dfnum = df.select_dtypes([np.number])
 # note: this does not work so well...
+# print(dfnum)
+# Stephen's note, when inferring the object types, the types are reinstated, meaning the select_dtypes function will work properly
 
 # then create a table where each entry is marked as true or false based on whether the value falls within 3 standard
 # deviations of every other value in that column
 dfnum_bool = np.abs(dfnum - dfnum.mean()) <= (3 * dfnum.std())
+# print(dfnum_bool)
 
 # Filter out all rows that have at least one value outside the standard deviation
 df = df[(dfnum_bool).all(axis=1)]
+# print(df)
 
-print(df)
 # print out the different types for each column
 # print(df.dtypes)
 
@@ -56,3 +65,34 @@ print(df)
 
 # integrate Stephen's code into mine
 # try to single out a column of data and find its distribution using pandas or scipy or numpi or matplotlib?
+
+# Matt's histogram code
+
+# Function Defs
+def plot_hist (data, title = ""):
+    fig, ax = plt.subplots()
+    ax.hist(data, bins='auto')
+    # bins can be auto, fd, or a number
+    ax.set_title(title)
+    plt.show()
+
+
+lengths = df.loc[:, "H. picarti larv l [mm]"]
+diam = df.loc[:, "H. picarti otolith diam [mm]"]
+
+
+#fig1, ax1 = plt.subplots()
+#ax1.hist(lengths, bins='fd')
+#ax1.set_title("Length (mm)")
+
+#fig2, ax2 = plt.subplots()
+#ax2.hist(diam, bins=20)
+#ax2.set_title("Diameter (mm)")
+
+#plt.show()
+
+plot_hist(diam, "H. picarti otolith diam [mm]")
+plot_hist(lengths, "H. picarti larv l [mm]")
+
+# distribution fitting, based on diameter, length, age
+# next, try to fill in the missing field values
